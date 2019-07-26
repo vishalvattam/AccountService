@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="springLocation" source="spring.config.location" />
+    <property resource="application.properties" />
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file}_%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <maxFileSize>${logfile.maxFileSize}</maxFileSize>
+            <maxHistory>${logfile.maxHistory}</maxHistory>
+            <totalSizeCap>${logfile.totalSizeCap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${logging.level.root}">
+        <appender-ref ref = "FILE" />
+        <appender-ref ref = "STDOUT" />
+    </root>
+</configuration>
