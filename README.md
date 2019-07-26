@@ -1,5 +1,5 @@
 # Spring Boot backend REST API Project
-=======================================================================================================================================
+
 This is a sample Java / Maven / Spring Boot application that REST API implementation for below scenarios - 
 1. API to get account(s) for the user
 2. API to provide the list of transactions for given account number
