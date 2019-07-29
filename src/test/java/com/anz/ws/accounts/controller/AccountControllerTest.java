@@ -50,7 +50,7 @@ public class AccountControllerTest {
         Mockito.when(accountService.getTransactions("110001", PageRequest.of(0, 10))).thenReturn(getTxnResponseList());
         mockMvc.perform(get("/v1/account/{userId}", "user1")
                 .param("page", "0")
-                .param("size", "-1")
+                .param("size", "10")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }

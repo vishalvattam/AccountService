@@ -12,9 +12,6 @@ import java.util.Date;
 
 @Data
 @Builder
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "ACCOUNT")
 public class Account implements Serializable {

@@ -13,6 +13,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -54,6 +55,7 @@ public class AccountControllerIntegrationTest {
                 .statusCode(HttpStatus.OK.value())
                 .contentType(ContentType.JSON)
                 .extract().body().asString();
+        assertThat(responseBody.contains("anz-test-user") );
 
     }
 
@@ -84,6 +86,6 @@ public class AccountControllerIntegrationTest {
                 .statusCode(HttpStatus.OK.value())
                 .contentType(ContentType.JSON)
                 .extract().body().asString();
-
+        assertThat(responseBody.contains("100001") );
     }
 }
