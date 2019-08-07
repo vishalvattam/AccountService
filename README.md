@@ -90,7 +90,7 @@ Running test(s)
    a. Account number is unique for the user.
 
    b. For creating account and transaction dataset, H2 in-memory database is used which loads the data on application start-up. 
-    Refer sql files : 
+    Refer sql files for table creation script & sample data script: 
     
        AccountService_DDL_1.0.0.0.sql, AccountService_DML_1.0.0.0.sql
        
