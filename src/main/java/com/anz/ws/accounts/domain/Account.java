@@ -12,6 +12,8 @@ import java.util.Date;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "ACCOUNT")
 public class Account implements Serializable {

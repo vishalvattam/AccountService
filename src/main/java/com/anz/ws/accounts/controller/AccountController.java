@@ -1,6 +1,7 @@
 package com.anz.ws.accounts.controller;
 
 import com.anz.ws.accounts.constant.AccountServiceConstants;
+import com.anz.ws.accounts.exception.ResourceNotFoundException;
 import com.anz.ws.accounts.jsonbean.AccountResponse;
 import com.anz.ws.accounts.jsonbean.TransactionResponse;
 import com.anz.ws.accounts.service.AccountService;
@@ -34,6 +35,7 @@ public class AccountController {
         List<AccountResponse> accounts = accountService.getAccounts(userId, PageRequest.of(page, size));
         if (accounts == null || accounts.size() == 0) {
             log.info(AccountServiceConstants.ACCOUNTS_NOT_FOUND_ERR + userId);
+            throw new ResourceNotFoundException(AccountServiceConstants.ACCOUNTS_NOT_FOUND_ERR + userId);
         } else {
             log.info("Account list for user::"+ userId + "is " +accounts);
         }
@@ -49,6 +51,7 @@ public class AccountController {
         List<TransactionResponse> transactions = accountService.getTransactions(accountNumber, PageRequest.of(page, size));
         if (transactions == null || transactions.size() == 0) {
             log.info(AccountServiceConstants.TRANSACTIONS_NOT_FOUND_ERR + accountNumber);
+            throw new ResourceNotFoundException(AccountServiceConstants.TRANSACTIONS_NOT_FOUND_ERR + accountNumber);
         } else {
             log.info("Transaction list sent for account::"+ accountNumber + "is " +transactions);
         }

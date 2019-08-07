@@ -35,6 +35,21 @@ public class AccountExceptionHandler extends ResponseEntityExceptionHandler {
                 .build());
     }
 
+    /** Handler method for any validation error for request parameters. e.g max value check.
+     * @param ex
+     * @return
+     */
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    ResponseEntity<Object> handleResourceNotFoundException(ResourceNotFoundException ex) {
+        logger.error("Resource not found: " +ex.getMessage());
+        return buildResponseEntity(AccountError.builder()
+                .status(HttpStatus.NOT_FOUND)
+                .message(ex.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build());
+    }
+
     /**
      * Handler method for invalid request fields. e.g. null-check, format-check
      *

@@ -38,8 +38,7 @@ public class AccountControllerIntegrationTest {
                 .get("/v1/account/" + userIdWithNoAccount)
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.OK.value())
-                .body((is(equalTo("[]"))))
+                .statusCode(HttpStatus.NOT_FOUND.value())
                 .contentType(ContentType.JSON)
                 .log().all();
     }
@@ -52,7 +51,7 @@ public class AccountControllerIntegrationTest {
                 .when()
                 .get("/v1/account/" + userId)
                 .then().assertThat()
-                .statusCode(HttpStatus.OK.value())
+                .statusCode(HttpStatus.NOT_FOUND.value())
                 .contentType(ContentType.JSON)
                 .extract().body().asString();
         assertThat(responseBody.contains("anz-test-user") );
@@ -69,7 +68,7 @@ public class AccountControllerIntegrationTest {
                 .get("/v1/account/" + accNoWithNoTxn + "/transactions")
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.OK.value())
+                .statusCode(HttpStatus.NOT_FOUND.value())
                 .contentType(ContentType.JSON)
                 .log().all();
     }
